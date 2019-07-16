@@ -112,6 +112,7 @@ class ExtDN_Installer
             # TODO check current maintenance mode
             # TODO check for mismatched php versions
             # TODO check for missing auth (maybe restore from var/composer_home if available)
+            # TODO we could backup composer.lock to allow a rollback
 
             # check for unfinished composer operations
             $this->checkOutstandingComposerChanges();
