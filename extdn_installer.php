@@ -147,6 +147,7 @@ class ExtDN_Installer
 
     private function out($msg, $colour = "\033[0m")
     {
+        //TODO we could log to file as well
         echo $colour . $msg . "\033[0m". PHP_EOL;
     }
 
