@@ -109,8 +109,9 @@ class ExtDN_Installer
             # check current Magento mode - confirm proceed for production
             $this->checkMagentoMode();
 
-            # check current maintenance mode
-            # TODO
+            # TODO check current maintenance mode
+            # TODO check for mismatched php versions
+            # TODO check for missing auth (maybe restore from var/composer_home if available)
 
             # check for unfinished composer operations
             $this->checkOutstandingComposerChanges();
@@ -297,7 +298,7 @@ class ExtDN_Installer
                         'Install in a development environment and use your standard deployment process.',
                         '',
                         'Switch to developer mode manually before re-running the installer.',
-                        '/usr/bin/php -f bin/magento deploy:mode:set developer',
+                        '/usr/bin/env php -f bin/magento deploy:mode:set developer',
                         '',
                         'Re-run this installer with the maintenance question answered yes.'
                     ]
