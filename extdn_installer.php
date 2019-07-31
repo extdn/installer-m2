@@ -241,6 +241,7 @@ class ExtDN_Installer
 
     private function getFileOwnerShipSuggestions()
     {
+        //TODO we can probably make this more specific to the actual encountered issue
         $currentProcessUserId = posix_geteuid();
         return [
             '* Change your current user to the file owner:',
