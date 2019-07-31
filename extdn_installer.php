@@ -222,8 +222,7 @@ class ExtDN_Installer
     {
         $this->out('Checking file ownership.');
         $output = [];
-        //TODO: I have come across git files as read-only which should be okay
-        exec('find . ! -writable', $output, $return);
+        exec('find . ! -writable -not -path "*.git/objects/pack*"', $output, $return);
 
         if ($return !== 0) {
             $this->exitWithError(
@@ -349,8 +348,22 @@ class ExtDN_Installer
     public function installCode()
     {
         $this->out('Installing module code.' . PHP_EOL);
+        $return = 0;
         $output = [];
         switch (strtolower($this->getOption('template'))) {
+            case 'github':
+                exec(
+                    $this->constructComposerCommand(
+                        sprintf(
+                            'config repositories.%s vcs %s',
+                            strtolower($this->getOption('package')),
+                            $this->getOption('repo-url')
+                        )
+                    )
+                );
+                exec($this->constructComposerCommand('require ' . $this->getOption('package')), $output, $return);
+                break;
+                break;
             # TODO other installation modes / vendor templates? composer zip artifact
             case 'marketplace':
                 //TODO check keys
@@ -358,9 +371,6 @@ class ExtDN_Installer
             case 'pre-configured':
                 //works for other pre-configured composer repositories too
                 exec($this->constructComposerCommand('require ' . $this->getOption('package')), $output, $return);
-                if ($return !== 0) {
-                    $this->exitWithError('Composer require failed with ' . implode(PHP_EOL, $output));
-                }
                 break;
             default:
                 //map template name to vendor with extra repo
@@ -374,10 +384,10 @@ class ExtDN_Installer
                     )
                 );
                 exec($this->constructComposerCommand('require ' . $this->getOption('package')), $output, $return);
-                if ($return !== 0) {
-                    $this->exitWithError('Composer require failed with ' . implode(PHP_EOL, $output));
-                }
                 break;
+        }
+        if ($return !== 0) {
+            $this->exitWithError('Composer require failed with ' . implode(PHP_EOL, $output));
         }
         $this->out('[OK]' . PHP_EOL, "\033[32m");
     }
