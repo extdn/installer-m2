@@ -1,0 +1,31 @@
+language: php
+dist: trusty
+sudo: false
+
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
+php:
+  - 7.1
+  - 7.2
+
+before_install:
+  - composer --verbose self-update
+  - composer --version
+
+install:
+  - composer --verbose validate
+
+script:
+  # Run automated tests.
+  - composer install && ./vendor/bin/phpunit
+  - cd .. && composer create-project --repository=https://repo-magento-mirror.fooman.co.nz/ magento/project-community-edition:^2.3 m2-folder --no-install --no-interaction
+  - cd m2-folder
+  - composer config --unset repo.0
+  - composer config repo.foomanmirror composer https://repo-magento-mirror.fooman.co.nz/
+  - composer install --prefer-dist
+  # test a oneliner installation from packagist
+  - sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh)" -- install fooman/printorderpdf-m2
+  # test a oneliner installation from github
+  - sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh)"  -- --template=github --repo-url=https://github.com/fooman/emailattachments-m2.git install fooman/emailattachments-m2
