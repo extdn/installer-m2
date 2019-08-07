@@ -21,17 +21,17 @@ List of checks
 #### Installation from packagist or Marketplace 
 (essentially all previously pre-configured composer repositories)
 ```
-curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh | bash -- install fooman/emailattachments-m2
+sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh)" -- install fooman/emailattachments-m2
 ```
 
 #### Installation from Github
 ```
-curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh | bash --template=github --repo-url=https://github.com/fooman/emailattachments-m2.git -- install fooman/emailattachments-m2 
+sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh)"  -- --template=github --repo-url=https://github.com/fooman/emailattachments-m2.git install fooman/emailattachments-m2 
 ```
 
 #### Installation from Fooman Repo
 ```
-curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh | bash --template=fooman --repo-url=https://customer-repo.fooman.co.nz/URL-PRIVATE_TOKEN -- install fooman/emailattachments-m2 
+sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh)"  -- --template=fooman --repo-url=https://customer-repo.fooman.co.nz/URL-PRIVATE_TOKEN install fooman/emailattachments-m2 
 ```
 
 ## Limitations
