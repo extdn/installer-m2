@@ -41,7 +41,7 @@ class ModuleEnable extends BaseBinMagento
         if (empty($moduleDiff)) {
             return Result::error($this, 'No new modules detected.');
         }
-        $this->modulesToEnable = '';
+        $this->modulesToEnable = ' --clear-static-content';
         foreach ($moduleDiff as $module => $value) {
             $this->modulesToEnable .= ' ' . $module;
         }
