@@ -135,7 +135,7 @@ class Installer extends \Robo\Tasks
         // TODO should add a non-interactive flag here to answer y
         if ($this->initialDeployMode === 'production') {
             $answer = $this->confirm(
-                'Magento is currently in production mode. Continuing will temporarily place the store into maintenance mode. Continue?'
+                'Magento is currently in production mode. Continuing will temporarily place the store into developer mode. Continue?'
             );
             if (!$answer) {
                 $this->exitWithError(
@@ -146,7 +146,7 @@ class Installer extends \Robo\Tasks
                         'Switch to developer mode manually before re-running the installer.',
                         '/usr/bin/env php -f bin/magento deploy:mode:set developer',
                         '',
-                        'Re-run this installer with the maintenance question answered yes.'
+                        'Re-run this installer with the above question answered yes.'
                     ]
                 );
             }
