@@ -49,6 +49,7 @@ class Installer extends \Robo\Tasks
 
             # TODO check environment? POSIX? ie enough memory?
             # TODO check for snowdog frontools?
+            # TODO checks for broken frontends
 
             # check recommended user
             # check file permissions (write)
