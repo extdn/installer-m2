@@ -1,5 +1,7 @@
 # ExtDN Installer for Magento 2 modules
 
+[![Build Status](https://travis-ci.org/extdn/installer-m2.svg?branch=master)](https://travis-ci.org/extdn/installer-m2)
+
 The installation of extensions for Magento 2 has a few scenarios to cover depending on your starting position
 (Magento mode being the most influential). A typical installation routine includes 5 or more steps.
 
