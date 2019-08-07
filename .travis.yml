@@ -32,4 +32,5 @@ script:
   # test a oneliner installation from packagist
   - sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh)" -- install fooman/printorderpdf-m2
   # test a oneliner installation from github
+  - composer config use-github-api false
   - sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh)"  -- --template=github --repo-url=https://github.com/fooman/emailattachments-m2.git install fooman/emailattachments-m2
