@@ -10,9 +10,16 @@ php:
   - 7.1
   - 7.2
 
+mysql:
+  database: extdn_installer_db
+  username: root
+
 before_install:
   - composer --verbose self-update
   - composer --version
+
+before_script:
+  - mysql -e 'create database extdn_installer_db'
 
 script:
   # Run automated tests.
@@ -21,6 +28,7 @@ script:
   - composer config --unset repo.0
   - composer config repo.foomanmirror composer https://repo-magento-mirror.fooman.co.nz/
   - composer install --prefer-dist
+  - php -f bin/magento setup:install --db-host=localhost --db-user=root --db-name=extdn_installer_db --admin-user=admin --admin-password=admin123 --admin-email="test@example.com" --admin-firstname=Test --admin-lastname=Admin --backend-frontname=admin
   # test a oneliner installation from packagist
   - sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh)" -- install fooman/printorderpdf-m2
   # test a oneliner installation from github
