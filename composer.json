@@ -1,0 +1,15 @@
+{
+  "name": "extdn/installer-m2",
+  "require": {
+    "consolidation/robo": "^1"
+  },
+  "autoload": {
+    "psr-4": {
+      "ExtDN\\": "src"
+    }
+  },
+  "bin": ["bin/extdn_installer"],
+  "scripts": {
+    "package-phar": "box build"
+  }
+}

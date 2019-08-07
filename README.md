@@ -8,6 +8,13 @@ sources and Magento installs. The installer starts with a range of checks to con
 to succeed:
 
 List of checks
+* Installation is into a Magento 2 instance
+* Files are writable by the current user
+* Installation is run by the current user
+* No outstanding Composer actions
+* Valid project composer.json
+* No outstanding Module installation
+* Confirmation for installation in production mode instances
 
 ## How to use
 
@@ -26,3 +33,9 @@ curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/extdn_insta
 ```
 curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/extdn_installer.php | php -- --package=fooman/emailattachments-m2 --template=fooman --repo-url=https://customer-repo.fooman.co.nz/URL-PRIVATE_TOKEN
 ```
+
+## Limitations
+The installer compares the list of modules before and after installing the extension code to determine which Magento module(s) to enable. This does not work if
+the just installed extension was previously installed and is still present in the app/etc/config.php file as disabled. The error in this case would be "No new modules detected."
+
+If installation is performed in production mode and an error is encountered the site will remain in developer mode.

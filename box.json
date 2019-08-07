@@ -1,0 +1,23 @@
+{
+  "files": [
+    "VERSION",
+    "composer.json"
+  ],
+  "directories": [
+    "src"
+  ],
+  "finder": [
+    {
+      "name": "*.php",
+      "exclude": [
+        "tests",
+        "test"
+      ],
+      "in": "vendor"
+    }
+  ],
+  "main": "bin/extdn_installer",
+  "output": "build/extdn_installer.phar",
+  "stub": true,
+  "chmod": "0755"
+}
