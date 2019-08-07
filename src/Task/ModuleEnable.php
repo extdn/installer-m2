@@ -6,7 +6,7 @@ use Robo\Result;
 
 class ModuleEnable extends BaseBinMagento
 {
-    const CMD_NOTICE = 'Enabling new Modules.';
+    const CMD_NOTICE = 'Enabling new modules.';
     const BIN_COMMAND = 'module:enable --clear-static-content';
 
     private $modulesToEnable;
