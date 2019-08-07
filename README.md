@@ -18,20 +18,42 @@ List of checks
 
 ## How to use
 
-#### Installation from packagist or Marketplace 
+### Option 1 - Oneliner
+This option is likely provided by an ExtDN member and allows the installation of your extension via just 1 command. Below are some examples for this.
+
+#### Oneliner Installation from packagist or Marketplace 
 (essentially all previously pre-configured composer repositories)
 ```
 sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh)" -- install fooman/emailattachments-m2
 ```
 
-#### Installation from Github
+#### Oneliner Installation from Github
 ```
 sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh)"  -- --template=github --repo-url=https://github.com/fooman/emailattachments-m2.git install fooman/emailattachments-m2 
 ```
 
-#### Installation from Fooman Repo
+#### Oneliner Installation from Fooman Repo
 ```
 sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh)"  -- --template=fooman --repo-url=https://customer-repo.fooman.co.nz/URL-PRIVATE_TOKEN install fooman/emailattachments-m2 
+```
+
+### Option 2 - Phar
+Download and save the [ExtDN_Installer](https://raw.githubusercontent.com/extdn/installer-m2/master/build/extdn_installer.phar). Ensure it is executable with `chmod +x extdn_installer.phar`.
+
+#### Phar Installation from packagist or Marketplace 
+(essentially all previously pre-configured composer repositories)
+```
+./extdn_installer.phar -- install fooman/emailattachments-m2
+```
+
+#### Phar Installation from Github
+```
+./extdn_installer.phar --template=github --repo-url=https://github.com/fooman/emailattachments-m2.git -- install fooman/emailattachments-m2 
+```
+
+#### Phar Installation from Fooman Repo
+```
+./extdn_installer.phar --template=fooman --repo-url=https://customer-repo.fooman.co.nz/URL-PRIVATE_TOKEN -- install fooman/emailattachments-m2 
 ```
 
 ## Limitations
