@@ -63,3 +63,5 @@ The installer compares the list of modules before and after installing the exten
 the just installed extension was previously installed and is still present in the app/etc/config.php file as disabled. The error in this case would be "No new modules detected."
 
 If installation is performed in production mode and an error is encountered the site will remain in developer mode.
+
+No Windows support - see #5
