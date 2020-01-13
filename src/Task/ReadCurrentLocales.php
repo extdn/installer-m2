@@ -31,7 +31,10 @@ class ReadCurrentLocales extends \Robo\Task\BaseTask implements BuilderAwareInte
         }
         try {
             /** @var \Robo\Result $result */
-            $result = $this->collectionBuilder()->taskExec('find pub/static -maxdepth 4 -mindepth 4 -type d')->silent(true)->run();
+            $result = $this->collectionBuilder()
+                           ->taskExec('find pub/static -maxdepth 4 -mindepth 4 -type d')
+                           ->silent(true)
+                           ->run();
             $this->printTaskSuccess('[OK]');
             $data = [];
             $data['locales'] = explode(PHP_EOL, $result->getMessage());

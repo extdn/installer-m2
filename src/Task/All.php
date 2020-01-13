@@ -88,4 +88,19 @@ trait All
     {
         return $this->task(StaticContentCompile::class, $locales);
     }
+
+    protected function taskCacheStatus()
+    {
+        return $this->task(CacheStatus::class);
+    }
+
+    protected function taskReadCacheStatus($cacheTypes)
+    {
+        return $this->task(ReadCacheStatus::class, $cacheTypes);
+    }
+
+    protected function taskCacheEnable($cachesToEnable)
+    {
+        return $this->task(CacheEnable::class, $cachesToEnable);
+    }
 }

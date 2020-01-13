@@ -14,6 +14,7 @@ class Installer extends \Robo\Tasks
     private $config;
     private $initialLocales;
     private $initialModules;
+    private $initialCaches;
     private $initialDeployMode;
     private $initialMaintenance;
 
@@ -80,6 +81,7 @@ class Installer extends \Robo\Tasks
 
             # TODO question can we do a dry-run option for the complete install?
             $this->installNewModule();
+            $this->reenableCachesIfNeeded();
 
             $this->taskDisableMaintenance()->run();
 
@@ -100,6 +102,27 @@ class Installer extends \Robo\Tasks
     private function loadMageEnv()
     {
         $this->mageEnv = require getcwd() . '/app/etc/env.php';
+        # save current cache status so that we can ensure same caches
+        # are re-enabled again to workaround bug https://github.com/magento/magento2/issues/17634
+        $this->initialCaches = $this->mageEnv['cache_types'];
+    }
+
+    private function reenableCachesIfNeeded()
+    {
+        $result = $this->taskReadCacheStatus(array_keys($this->initialCaches))->run();
+        $currentEnabledCaches = $result->getData()['enabled-caches'];
+
+        $cachesToReEnable = '';
+        $initialCaches =  $this->initialCaches;
+        foreach ($initialCaches as $cacheType => $cacheStatus) {
+            if ($cacheStatus && !isset($currentEnabledCaches[$cacheType])) {
+                $cachesToReEnable .= $cacheType . ' ';
+            }
+        }
+
+        if (!empty($cachesToReEnable)) {
+            $this->taskCacheEnable($cachesToReEnable);
+        }
     }
 
     private function exitWithError($msg, $suggestions = [])
