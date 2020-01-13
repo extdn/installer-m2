@@ -10,6 +10,11 @@
   },
   "bin": ["bin/extdn_installer"],
   "scripts": {
-    "package-phar": "box build"
+    "package-phar": "composer update && box build"
+  },
+  "config": {
+    "platform": {
+      "php": "7.0"
+    }
   }
 }

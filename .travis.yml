@@ -7,6 +7,7 @@ cache:
     - $HOME/.composer/cache/files
 
 php:
+  - 7.0
   - 7.1
   - 7.2
   - 7.3
@@ -14,6 +15,17 @@ php:
 env:
   - MAGENTO_BRANCH=2.2
   - MAGENTO_BRANCH=2.3
+
+jobs:
+  include:
+    - php: 7.0
+      env: MAGENTO_BRANCH=2.2
+    - php: 7.2
+      env: MAGENTO_BRANCH=2.2
+    - php: 7.1
+      env: MAGENTO_BRANCH=2.3
+    - php: 7.3
+      env: MAGENTO_BRANCH=2.3
 
 mysql:
   database: extdn_installer_db
