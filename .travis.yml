@@ -15,9 +15,9 @@ matrix:
     - name: PHP 7.2 with Magento 2.2.10
       php: 7.2
       env: MAGENTO_VERSION=2.2.10 MAGE_MODE=production
-    - name: PHP 7.1 with Magento 2.3.0
+    - name: PHP 7.1 with Magento 2.3.1
       php: 7.1
-      env: MAGENTO_VERSION=2.3.0 MAGE_MODE=developer
+      env: MAGENTO_VERSION=2.3.1 MAGE_MODE=developer
     - name: PHP 7.3 with Magento 2.3.3
       php: 7.3
       env: MAGENTO_VERSION=2.3.3 MAGE_MODE=production
