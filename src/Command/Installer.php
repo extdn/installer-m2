@@ -34,7 +34,7 @@ class Installer extends \Robo\Tasks
      */
     public function install(
         $package,
-        $options = ['repo-url' => null, 'template'=>'pre-configured', 'no-interaction'=> false]
+        $options = ['repo-url' => null, 'template'=>'pre-configured']
     ) {
         $this->say($this->getBanner());
         $this->options = $options;
