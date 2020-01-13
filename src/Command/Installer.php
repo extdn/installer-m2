@@ -82,6 +82,7 @@ class Installer extends \Robo\Tasks
             $this->taskCheckComposerIssues($this->getComposerPath())->run();
 
             # TODO question can we do a dry-run option for the complete install?
+            $this->confirmBackup();
             $this->installNewModule();
             $this->reenableCachesIfNeeded();
 
@@ -107,6 +108,21 @@ class Installer extends \Robo\Tasks
         # save current cache status so that we can ensure same caches
         # are re-enabled again to workaround bug https://github.com/magento/magento2/issues/17634
         $this->initialCaches = $this->mageEnv['cache_types'];
+    }
+
+    private function confirmBackup()
+    {
+        if (!$this->getOption('no-interaction')) {
+            $answer = $this->confirm(
+                'About to make changes to the filesystem. '
+                . 'Please confirm you have a current backup to restore from. Continue?'
+            );
+            if (!$answer) {
+                $this->exitWithError(
+                    'Stopped installation as requested. Please take a backup before proceeding.'
+                );
+            }
+        }
     }
 
     private function reenableCachesIfNeeded()
