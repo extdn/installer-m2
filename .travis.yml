@@ -6,26 +6,21 @@ cache:
   directories:
     - $HOME/.composer/cache/files
 
-php:
-  - 7.0
-  - 7.1
-  - 7.2
-  - 7.3
-
-env:
-  - MAGENTO_BRANCH=2.2
-  - MAGENTO_BRANCH=2.3
-
-jobs:
+matrix:
+  fast_finish: true
   include:
-    - php: 7.0
-      env: MAGENTO_BRANCH=2.2
-    - php: 7.2
-      env: MAGENTO_BRANCH=2.2
-    - php: 7.1
-      env: MAGENTO_BRANCH=2.3
-    - php: 7.3
-      env: MAGENTO_BRANCH=2.3
+    - name: PHP 7.0 with Magento 2.2.0
+      php: 7.0
+      env: MAGENTO_VERSION=2.2.0
+    - name: PHP 7.2 with Magento 2.2.10
+      php: 7.2
+      env: MAGENTO_VERSION=2.2.10
+    - name: PHP 7.1 with Magento 2.3.0
+      php: 7.1
+      env: MAGENTO_VERSION=2.3.0
+    - name: PHP 7.3 with Magento 2.3.3
+      php: 7.3
+      env: MAGENTO_VERSION=2.3.3
 
 mysql:
   database: extdn_installer_db
@@ -40,7 +35,7 @@ before_script:
 
 script:
   # Run automated tests.
-  - composer create-project --repository=https://repo-magento-mirror.fooman.co.nz/ magento/project-community-edition:^$MAGENTO_BRANCH m2-folder --no-install --no-interaction
+  - composer create-project --repository=https://repo-magento-mirror.fooman.co.nz/ magento/project-community-edition=$MAGENTO_VERSION m2-folder --no-install --no-interaction
   - cd m2-folder
   - composer config --unset repo.0
   - composer config repo.foomanmirror composer https://repo-magento-mirror.fooman.co.nz/
