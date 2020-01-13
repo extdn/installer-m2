@@ -28,8 +28,13 @@ class InstallCode extends \Robo\Task\BaseTask implements BuilderAwareInterface
         $this->printTaskInfo('Installing module code.');
         switch (strtolower($this->template)) {
             case 'github':
+                $repoName = $this->package;
+                if (strpos($repoName, ':') !== false) {
+                    list($repoName, $constraint) = explode($this->package, ':', 2);
+                }
+
                 $this->collectionBuilder()->taskComposerConfig($this->path)->repository(
-                    strtolower($this->package),
+                    strtolower($repoName),
                     $this->repoUrl,
                     'vcs'
                 )->run();
