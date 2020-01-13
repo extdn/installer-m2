@@ -30,7 +30,7 @@ class InstallCode extends \Robo\Task\BaseTask implements BuilderAwareInterface
             case 'github':
                 $repoName = $this->package;
                 if (strpos($repoName, ':') !== false) {
-                    list($repoName, $constraint) = explode($this->package, ':', 2);
+                    list($repoName, $constraint) = explode(':', $this->package, 2);
                 }
 
                 $this->collectionBuilder()->taskComposerConfig($this->path)->repository(
