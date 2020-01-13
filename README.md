@@ -18,6 +18,9 @@ List of checks
 * No outstanding Module installation
 * Confirmation for installation in production mode instances
 
+## Should I use this?
+Do you have an existing deployment or development process for M2 extension installations? If yes you likely do not benefit from this installer, if no please read on.
+
 ## How to use
 
 ### Option 1 - Oneliner
