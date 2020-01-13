@@ -9,6 +9,11 @@ cache:
 php:
   - 7.1
   - 7.2
+  - 7.3
+
+env:
+  - MAGENTO_BRANCH=2.2
+  - MAGENTO_BRANCH=2.3
 
 mysql:
   database: extdn_installer_db
@@ -23,7 +28,7 @@ before_script:
 
 script:
   # Run automated tests.
-  - composer create-project --repository=https://repo-magento-mirror.fooman.co.nz/ magento/project-community-edition:^2.3 m2-folder --no-install --no-interaction
+  - composer create-project --repository=https://repo-magento-mirror.fooman.co.nz/ magento/project-community-edition:^$MAGENTO_BRANCH m2-folder --no-install --no-interaction
   - cd m2-folder
   - composer config --unset repo.0
   - composer config repo.foomanmirror composer https://repo-magento-mirror.fooman.co.nz/
