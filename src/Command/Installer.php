@@ -32,8 +32,10 @@ class Installer extends \Robo\Tasks
      *
      * @return CommandError|int
      */
-    public function install($package, $options = ['repo-url' => null, 'template'=>'pre-configured'])
-    {
+    public function install(
+        $package,
+        $options = ['repo-url' => null, 'template'=>'pre-configured', 'no-interaction'=> false]
+    ) {
         $this->say($this->getBanner());
         $this->options = $options;
         $this->options['package'] = $package;
@@ -155,10 +157,10 @@ class Installer extends \Robo\Tasks
         }
 
         $this->initialDeployMode = $this->mageEnv['MAGE_MODE'];
-        // TODO should add a non-interactive flag here to answer y
-        if ($this->initialDeployMode === 'production') {
+        if ($this->initialDeployMode === 'production' && !$this->getOption('no-interaction')) {
             $answer = $this->confirm(
-                'Magento is currently in production mode. Continuing will temporarily place the store into developer mode. Continue?'
+                'Magento is currently in production mode.'
+                .'Continuing will temporarily place the store into developer mode. Continue?'
             );
             if (!$answer) {
                 $this->exitWithError(
