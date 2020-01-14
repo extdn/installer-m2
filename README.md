@@ -63,6 +63,11 @@ Download and save the [ExtDN_Installer](https://github.com/extdn/installer-m2/ra
 ./extdn_installer.phar --template=fooman --repo-url=https://customer-repo.fooman.co.nz/URL-PRIVATE_TOKEN -- install fooman/emailattachments-m2:^3.0 
 ```
 
+## Vendor agnostic
+The installer is open to a wide range of sources to install from and is not limited to any specific vendor (nor is ExtDN membership needed). Your package could be available via packagist.org, 
+Marketplace (repo.magento.com) or Github. Further it will work for any other vendor that supplies their packages via a composer repository url. Simply supply your vendor name in the `--template` argument 
+and provide the repository url via `--repo-url`. If your installation is not covered feel free to open a PR that provides a new template.
+
 ## Limitations
 The installer compares the list of modules before and after installing the extension code to determine which Magento module(s) to enable. This does not work if
 the just installed extension was previously installed and is still present in the app/etc/config.php file as disabled. The error in this case would be "No new modules detected."
