@@ -50,17 +50,17 @@ Download and save the [ExtDN_Installer](https://github.com/extdn/installer-m2/ra
 #### Phar Installation from packagist or Marketplace 
 (essentially all previously pre-configured composer repositories)
 ```
-./extdn_installer.phar -- install fooman/emailattachments-m2
+./extdn_installer.phar -- install fooman/emailattachments-m2:^3.0
 ```
 
 #### Phar Installation from Github
 ```
-./extdn_installer.phar --template=github --repo-url=https://github.com/fooman/emailattachments-m2.git -- install fooman/emailattachments-m2 
+./extdn_installer.phar --template=github --repo-url=https://github.com/fooman/emailattachments-m2.git -- install fooman/emailattachments-m2:^3.0 
 ```
 
 #### Phar Installation from Fooman Repo
 ```
-./extdn_installer.phar --template=fooman --repo-url=https://customer-repo.fooman.co.nz/URL-PRIVATE_TOKEN -- install fooman/emailattachments-m2 
+./extdn_installer.phar --template=fooman --repo-url=https://customer-repo.fooman.co.nz/URL-PRIVATE_TOKEN -- install fooman/emailattachments-m2:^3.0 
 ```
 
 ## Limitations
