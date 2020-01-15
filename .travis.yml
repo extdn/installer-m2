@@ -43,7 +43,7 @@ script:
   - php -f bin/magento setup:install --db-host=localhost --db-user=root --db-name=extdn_installer_db --admin-user=admin --admin-password=admin123 --admin-email="test@example.com" --admin-firstname=Test --admin-lastname=Admin --backend-frontname=admin
   - if [ $MAGE_MODE != "default" ]; then php -f bin/magento deploy:mode:set $MAGE_MODE; fi
   # test a oneliner installation from packagist
-  - sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/v1.0.0-beta3/bin/oneliner.sh)" -- --no-interaction install fooman/printorderpdf-m2:^3.0
+  - sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/$TRAVIS_BRANCH/bin/oneliner.sh)" -- --no-interaction install fooman/printorderpdf-m2:^3.0
   # test a oneliner installation from github
   - composer config use-github-api false
-  - sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/v1.0.0-beta3/bin/oneliner.sh)"  -- --template=github --repo-url=https://github.com/fooman/emailattachments-m2.git --no-interaction install fooman/emailattachments-m2:^3.0
+  - sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/$TRAVIS_BRANCH/bin/oneliner.sh)"  -- --template=github --repo-url=https://github.com/fooman/emailattachments-m2.git --no-interaction install fooman/emailattachments-m2:^3.0
