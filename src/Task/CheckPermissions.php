@@ -63,14 +63,17 @@ class CheckPermissions extends \Robo\Task\BaseTask
         exec('find . ! -writable -not -path "*.git/objects/pack*"', $output, $return);
 
         if ($return !== 0) {
-            $this->exitWithError(
-                'Not all files are writable for the current user', $this->getFileOwnerShipSuggestions()
+            return Result::error(
+                $this,
+                'Not all files are writable for the current user'.
+                $this->getFileOwnerShipSuggestions()
             );
         }
 
         if (!empty($output)) {
-            $this->exitWithError(
-                'The following files are not writable for the current user' . PHP_EOL . implode(PHP_EOL, $output),
+            return Result::error(
+                $this,
+                'The following files are not writable for the current user' . PHP_EOL . implode(PHP_EOL, $output).
                 $this->getFileOwnerShipSuggestions()
             );
         }
@@ -81,17 +84,21 @@ class CheckPermissions extends \Robo\Task\BaseTask
     {
         //TODO we can probably make this more specific to the actual encountered issue
         $currentProcessUserId = posix_geteuid();
-        return implode(
-            PHP_EOL,
+        return PHP_EOL . PHP_EOL . implode(
+                PHP_EOL,
             [
-                '* Change your current user to the file owner:',
+                'Suggestion on how to fix:',
+                '',
+                'Change your current user to the file owner:',
                 sprintf('su - %s -s /bin/sh', posix_getpwuid($currentProcessUserId)['name']),
                 '',
-                '* Change the file ownership to the current user:',
+                'OR change the file ownership to the current user:',
                 sprintf('sudo chown %s -R %s', posix_getpwuid($currentProcessUserId)['name'], getcwd()),
                 '',
-                '* Change the file permissions for the current user:',
+                'OR change the file permissions for the current user:',
                 sprintf('chmod +w -R %s', getcwd()),
+                '',
+                'If in doubt please check with your server administrator or webhosting provider before executing any commands.'.
                 ''
             ]
         );

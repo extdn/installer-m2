@@ -44,12 +44,7 @@ class CheckComposerIssues extends \Robo\Task\BaseTask implements BuilderAwareInt
                     'Found some issues. Continuing could apply package updates. Continue?'
                 );
                 if (!$answer) {
-                    $this->exitWithError(
-                        'Stopped installation as requested',
-                        [
-                            $this->path . ' update'
-                        ]
-                    );
+                    return Result::error($this, 'Stopped installation as requested');
                 }
             }
             $this->printTaskSuccess('[OK]');
