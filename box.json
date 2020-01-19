@@ -16,8 +16,6 @@
       "in": "vendor"
     }
   ],
-  "main": "bin/extdn_installer",
   "output": "build/extdn_installer.phar",
-  "stub": true,
-  "chmod": "0755"
+  "compactors": ["KevinGH\\Box\\Compactor\\Php"]
 }

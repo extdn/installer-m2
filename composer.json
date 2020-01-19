@@ -10,7 +10,7 @@
   },
   "bin": ["bin/extdn_installer"],
   "scripts": {
-    "package-phar": "composer update && box build"
+    "package-phar": "composer update && curl -L https://github.com/humbug/box/releases/download/3.8.4/box.phar -o ./build/box.phar && chmod +x ./build/box.phar && ./build/box.phar compile"
   },
   "config": {
     "platform": {
