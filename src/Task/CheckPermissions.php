@@ -60,7 +60,7 @@ class CheckPermissions extends \Robo\Task\BaseTask
     {
         $this->printTaskInfo('Checking file ownership.');
         $output = [];
-        exec('find . ! -writable -not -path "*.git/objects/pack*"', $output, $return);
+        exec('find . ! -writable -not -path "*.git/objects/*"', $output, $return);
 
         if ($return !== 0) {
             return Result::error(
