@@ -1,12 +1,12 @@
 language: php
 dist: trusty
-sudo: false
+os: linux
 
 cache:
   directories:
     - $HOME/.composer/cache/files
 
-matrix:
+jobs:
   fast_finish: true
   include:
     - name: PHP 7.0 with Magento 2.2.0
@@ -22,9 +22,7 @@ matrix:
       php: 7.3
       env: MAGENTO_VERSION=2.3.3 MAGE_MODE=production
 
-mysql:
-  database: extdn_installer_db
-  username: root
+services: mysql
 
 before_install:
   - composer --verbose self-update
@@ -47,3 +45,4 @@ script:
   # test a oneliner installation from github
   - composer config use-github-api false
   - sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/$TRAVIS_BRANCH/bin/oneliner.sh)"  -- --template=github --repo-url=https://github.com/fooman/emailattachments-m2.git --no-interaction install fooman/emailattachments-m2:^3.0
+  - sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/$TRAVIS_BRANCH/bin/oneliner.sh)" -- --version
