@@ -31,21 +31,21 @@ This option is likely provided by an ExtDN member and allows the installation of
 #### Oneliner Installation from packagist or Marketplace 
 (essentially all previously pre-configured composer repositories)
 ```
-sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/v1.0.0-beta5/bin/oneliner.sh)" -- install fooman/emailattachments-m2:^3.0
+sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh)" -- install fooman/emailattachments-m2:^3.0
 ```
 
 #### Oneliner Installation from Github
 ```
-sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/v1.0.0-beta5/bin/oneliner.sh)"  -- --template=github --repo-url=https://github.com/fooman/emailattachments-m2.git install fooman/emailattachments-m2:^3.0 
+sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh)"  -- --template=github --repo-url=https://github.com/fooman/emailattachments-m2.git install fooman/emailattachments-m2:^3.0 
 ```
 
 #### Oneliner Installation from Fooman Repo
 ```
-sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/v1.0.0-beta5/bin/oneliner.sh)"  -- --template=fooman --repo-url=https://customer-repo.fooman.co.nz/URL-PRIVATE_TOKEN install fooman/emailattachments-m2:^3.0 
+sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh)"  -- --template=fooman --repo-url=https://customer-repo.fooman.co.nz/URL-PRIVATE_TOKEN install fooman/emailattachments-m2:^3.0 
 ```
 
 ### Option 2 - Phar
-Download and save the [ExtDN_Installer](https://github.com/extdn/installer-m2/raw/v1.0.0-beta5/build/extdn_installer.phar). Ensure it is executable with `chmod +x extdn_installer.phar`.
+Download and save the [ExtDN_Installer](https://github.com/extdn/installer-m2/raw/v1.0.0-beta6/build/extdn_installer.phar). Ensure it is executable with `chmod +x extdn_installer.phar`.
 
 #### Phar Installation from packagist or Marketplace 
 (essentially all previously pre-configured composer repositories)
