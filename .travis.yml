@@ -12,15 +12,15 @@ jobs:
     - name: PHP 7.0 with Magento 2.2.0
       php: 7.0
       env: MAGENTO_VERSION=2.2.0 MAGE_MODE=default
-    - name: PHP 7.2 with Magento 2.2.10
+    - name: PHP 7.2 with Magento 2.2.11
       php: 7.2
-      env: MAGENTO_VERSION=2.2.10 MAGE_MODE=production
+      env: MAGENTO_VERSION=2.2.11 MAGE_MODE=production
     - name: PHP 7.1 with Magento 2.3.1
       php: 7.1
       env: MAGENTO_VERSION=2.3.1 MAGE_MODE=developer
-    - name: PHP 7.3 with Magento 2.3.3
+    - name: PHP 7.3 with Magento 2.3.4
       php: 7.3
-      env: MAGENTO_VERSION=2.3.3 MAGE_MODE=production
+      env: MAGENTO_VERSION=2.3.4 MAGE_MODE=production
 
 services: mysql
 
