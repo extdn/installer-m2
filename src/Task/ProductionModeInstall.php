@@ -27,9 +27,9 @@ class ProductionModeInstall extends DefaultModeInstall
             $localeKey = basename('/' . ltrim($locale, '/'));
             $localesToCompile[$localeKey] = $localeKey;
         }
-        $commandArg = '';
+        $commandArg = '--';
         foreach ($localesToCompile as $locale) {
-            $commandArg .= ' --language ' . $locale;
+            $commandArg .= ' ' . $locale;
         }
 
         $this->collectionBuilder()->taskStaticContentCompile($commandArg)->run();
