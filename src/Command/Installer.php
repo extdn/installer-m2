@@ -162,7 +162,7 @@ class Installer extends \Robo\Tasks
 
     private function getComposerPath()
     {
-        return 'vendor/composer/composer/bin/composer';
+        return '/usr/bin/env php -d memory_limit=-1 -f vendor/composer/composer/bin/composer';
     }
 
     private function checkMagentoMode()

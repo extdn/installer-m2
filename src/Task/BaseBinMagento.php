@@ -50,7 +50,7 @@ abstract class BaseBinMagento extends \Robo\Task\BaseTask implements BuilderAwar
 
     protected function constructBinMagentoCommand($cmd)
     {
-        $this->printTaskDebug('/usr/bin/env php -f bin/magento ' . $cmd);
-        return '/usr/bin/env php -f bin/magento ' . $cmd;
+        $this->printTaskDebug('/usr/bin/env php -d memory_limit=-1 -f bin/magento ' . $cmd);
+        return '/usr/bin/env php -d memory_limit=-1 -f bin/magento ' . $cmd;
     }
 }
