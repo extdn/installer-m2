@@ -63,7 +63,13 @@ class CheckComposerIssues extends \Robo\Task\BaseTask implements BuilderAwareInt
         // I have seen more than one person overwrite their root composer.json file from an extension...
         $composerContent = json_decode(file_get_contents(getcwd() . '/composer.json'), true);
 
-        return $this->hasMagentoInComposerDependencies($composerContent);
+        return $this->isClonedMagentoRepo($composerContent)
+            || $this->hasMagentoInComposerDependencies($composerContent);
+    }
+
+    private function isClonedMagentoRepo($composerContent)
+    {
+        return $composerContent['name'] === 'magento/magento2ce';
     }
 
     private function hasMagentoInComposerDependencies($composerContent)
