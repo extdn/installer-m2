@@ -63,11 +63,15 @@ class CheckPermissions extends \Robo\Task\BaseTask
         exec('find . ! -writable -not -path "*.git/objects/*"', $output, $return);
 
         if ($return !== 0) {
-            return Result::error(
-                $this,
-                'Not all files are writable for the current user'.
-                $this->getFileOwnerShipSuggestions()
-            );
+            //most likely on a system that does not support -writable for find, try alternative
+            exec('find . -not -perm /ugo+w -not -path "*.git/objects/*"', $output, $return);
+            if ($return !== 0) {
+                return Result::error(
+                    $this,
+                    'Not all files are writable for the current user' .
+                    $this->getFileOwnerShipSuggestions()
+                );
+            }
         }
 
         if (!empty($output)) {
