@@ -60,7 +60,7 @@ class CheckPermissions extends \Robo\Task\BaseTask
     {
         $this->printTaskInfo('Checking file ownership.');
         $output = [];
-        exec('find . ! -writable -not -path "*.git/objects/*"', $output, $return);
+        exec('find . ! -writable -not -path "*.git/objects/*" -not -path "./iworx-backup"', $output, $return);
 
         if ($return !== 0) {
             //most likely on a system that does not support -writable for find, try alternative
