@@ -5,15 +5,28 @@ namespace ExtDN\Task;
 use Robo\Contract\BuilderAwareInterface;
 use Robo\Result;
 
-abstract class BaseBinMagento extends \Robo\Task\BaseTask implements BuilderAwareInterface
+class BaseBinMagento extends \Robo\Task\BaseTask implements BuilderAwareInterface
 {
 
     use \Robo\Common\BuilderAwareTrait;
+    use \Robo\Common\ConfigAwareTrait;
 
     const CMD_NOTICE = '';
     const BIN_COMMAND = '';
 
     protected $silent = false;
+
+    protected static function configPrefix()
+    {
+        return 'task.ExtDN.BaseBinMagento.';
+    }
+
+    private static function getClassKey($key)
+    {
+        $configPrefix = static::configPrefix();                            // task.ExtDN.BaseBinMagento.
+        $configPostFix = static::configPostfix();                          // .settings
+        return sprintf('%s%s.%s', $configPrefix, $configPostFix, $key);
+    }
 
     /**
      * @return \Robo\Result
@@ -50,7 +63,8 @@ abstract class BaseBinMagento extends \Robo\Task\BaseTask implements BuilderAwar
 
     protected function constructBinMagentoCommand($cmd)
     {
-        $this->printTaskDebug('/usr/bin/env php -d memory_limit=-1 -f bin/magento ' . $cmd);
-        return '/usr/bin/env php -d memory_limit=-1 -f bin/magento ' . $cmd;
+        $phpBin = $this->getConfigValue('php-bin');
+        $this->printTaskDebug($phpBin . ' -d memory_limit=-1 -f bin/magento ' . $cmd);
+        return $phpBin .' -d memory_limit=-1 -f bin/magento ' . $cmd;
     }
 }

@@ -34,12 +34,12 @@ class Installer extends \Robo\Tasks
      */
     public function install(
         $package,
-        $options = ['repo-url' => null, 'template'=>'pre-configured']
+        $options = ['repo-url' => null, 'template'=>'pre-configured', 'php-bin'=> '/usr/bin/env php']
     ) {
         $this->say($this->getBanner());
         $this->options = $options;
         $this->options['package'] = $package;
-
+        \ExtDN\Task\BaseBinMagento::configure('php-bin', $this->getOption('php-bin'));
         $this->stopOnFail(true);
 
         try {
@@ -51,6 +51,7 @@ class Installer extends \Robo\Tasks
             $this->loadMageEnv();
 
             # TODO check environment? POSIX? ie enough memory?
+            # TODO compare current php version to what is needed in vendor/magento/magento2-base/composer.json
             # TODO check for snowdog frontools?
             # TODO checks for broken frontends
 
@@ -162,7 +163,7 @@ class Installer extends \Robo\Tasks
 
     private function getComposerPath()
     {
-        return '/usr/bin/env php -d memory_limit=-1 -f vendor/composer/composer/bin/composer';
+        return $this->getOption('php-bin') .' -d memory_limit=-1 -f vendor/composer/composer/bin/composer';
     }
 
     private function checkMagentoMode()
@@ -185,7 +186,7 @@ class Installer extends \Robo\Tasks
                         'Install in a development environment and use your standard deployment process.',
                         '',
                         'Switch to developer mode manually before re-running the installer.',
-                        '/usr/bin/env php -f bin/magento deploy:mode:set developer',
+                        $this->getOption('php-bin') .' -f bin/magento deploy:mode:set developer',
                         '',
                         'Re-run this installer with the above question answered yes.'
                     ]

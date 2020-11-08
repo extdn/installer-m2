@@ -45,7 +45,7 @@ sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/b
 ```
 
 ### Option 2 - Phar
-Download and save the [ExtDN_Installer](https://github.com/extdn/installer-m2/raw/v1.0.0-rc4/build/extdn_installer.phar). Ensure it is executable with `chmod +x extdn_installer.phar`.
+Download and save the [ExtDN_Installer](https://github.com/extdn/installer-m2/raw/v1.0.0-rc5/build/extdn_installer.phar). Ensure it is executable with `chmod +x extdn_installer.phar`.
 
 #### Phar Installation from packagist or Marketplace 
 (essentially all previously pre-configured composer repositories)
