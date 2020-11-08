@@ -9,7 +9,6 @@ class BaseBinMagento extends \Robo\Task\BaseTask implements BuilderAwareInterfac
 {
 
     use \Robo\Common\BuilderAwareTrait;
-    use \Robo\Common\ConfigAwareTrait;
 
     const CMD_NOTICE = '';
     const BIN_COMMAND = '';
@@ -21,7 +20,7 @@ class BaseBinMagento extends \Robo\Task\BaseTask implements BuilderAwareInterfac
         return 'task.ExtDN.BaseBinMagento.';
     }
 
-    private static function getClassKey($key)
+    protected static function getClassKey($key)
     {
         $configPrefix = static::configPrefix();                            // task.ExtDN.BaseBinMagento.
         $configPostFix = static::configPostfix();                          // .settings

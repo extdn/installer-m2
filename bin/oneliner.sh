@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-curl -sSL https://github.com/extdn/installer-m2/raw/v1.0.0-rc5/build/extdn_installer.phar -o extdn_installer.phar
+curl -sSL https://github.com/extdn/installer-m2/raw/v1.0.0-rc6/build/extdn_installer.phar -o extdn_installer.phar
 chmod +x extdn_installer.phar
 ./extdn_installer.phar $@
 RET_VALUE=$?
