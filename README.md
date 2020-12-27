@@ -1,7 +1,5 @@
 # ExtDN Installer for Magento 2 modules
 
-[![Build Status](https://travis-ci.org/extdn/installer-m2.svg?branch=master)](https://travis-ci.org/extdn/installer-m2)
-
 ![Installer in Action](docs/ProductionModeInstall.gif?raw=true")
 
 The installation of extensions for Magento 2 has a few scenarios to cover depending on your starting position
@@ -41,7 +39,7 @@ sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/b
 
 #### Oneliner Installation from Fooman Repo
 ```
-sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh)"  -- --template=fooman --repo-url=https://customer-repo.fooman.co.nz/URL-PRIVATE_TOKEN install fooman/emailattachments-m2:^3.0 
+sh -ic "$(curl -sS https://raw.githubusercontent.com/extdn/installer-m2/master/bin/oneliner.sh)"  -- --template=fooman --repo-url=https://customer-repos.fooman.co.nz/URL-PRIVATE_TOKEN install fooman/emailattachments-m2:^3.0 
 ```
 
 ### Option 2 - Phar
@@ -60,7 +58,7 @@ Download and save the [ExtDN_Installer](https://github.com/extdn/installer-m2/ra
 
 #### Phar Installation from Fooman Repo
 ```
-./extdn_installer.phar --template=fooman --repo-url=https://customer-repo.fooman.co.nz/URL-PRIVATE_TOKEN -- install fooman/emailattachments-m2:^3.0 
+./extdn_installer.phar --template=fooman --repo-url=https://customer-repos.fooman.co.nz/URL-PRIVATE_TOKEN -- install fooman/emailattachments-m2:^3.0 
 ```
 
 ## Vendor agnostic
