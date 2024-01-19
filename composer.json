@@ -1,7 +1,7 @@
 {
   "name": "extdn/installer-m2",
   "require": {
-    "consolidation/robo": "^1"
+    "consolidation/robo": "^3"
   },
   "autoload": {
     "psr-4": {
@@ -10,11 +10,11 @@
   },
   "bin": ["bin/extdn_installer"],
   "scripts": {
-    "package-phar": "composer update && curl -L https://github.com/humbug/box/releases/download/3.8.4/box.phar -o ./build/box.phar && chmod +x ./build/box.phar && ./build/box.phar compile"
+    "package-phar": "composer update && curl -L https://github.com/humbug/box/releases/download/3.14.0/box.phar -o ./build/box.phar && chmod +x ./build/box.phar && ./build/box.phar compile"
   },
   "config": {
     "platform": {
-      "php": "7.0"
+      "php": "7.4"
     }
   }
 }

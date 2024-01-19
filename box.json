@@ -6,6 +6,7 @@
   "directories": [
     "src"
   ],
+  "check-requirements": false,
   "finder": [
     {
       "name": "*.php",
