@@ -45,6 +45,11 @@ class Installer extends \Robo\Tasks
         try {
             $this->say('Running ExtDN Installer ');
 
+            if ($this->getOption('simulate')) {
+                $this->exitWithError(
+                    'Simulated installs are currently not supported.'
+                );
+            }
             # TODO maybe use a collection instead to run multiple tasks chained together
             # check correct directory
             $this->taskCheckMagentoRoot()->run();
